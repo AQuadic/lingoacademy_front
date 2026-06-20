@@ -330,6 +330,35 @@
     .wa-chathead svg{width:28px;height:28px;}
   }
 
+  /* SUBTLE REVEAL ANIMATIONS */
+  [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s cubic-bezier(.21,.6,.35,1);}
+  [data-reveal].in{opacity:1;transform:translateY(0);}
+  [data-reveal-group] > *{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s cubic-bezier(.21,.6,.35,1);}
+  [data-reveal-group].in > *{opacity:1;transform:translateY(0);}
+  [data-reveal-group].in > *:nth-child(1){transition-delay:.05s;}
+  [data-reveal-group].in > *:nth-child(2){transition-delay:.15s;}
+  [data-reveal-group].in > *:nth-child(3){transition-delay:.25s;}
+
+  .hero-text > *{opacity:0;transform:translateY(16px);animation:hero-in .7s cubic-bezier(.21,.6,.35,1) forwards;}
+  .hero-text .eyebrow{animation-delay:.05s;}
+  .hero-text h1{animation-delay:.15s;}
+  .hero-text p{animation-delay:.25s;}
+  .hero-text .hero-actions{animation-delay:.35s;}
+  .hero-text .hero-stats{animation-delay:.45s;}
+  @keyframes hero-in{to{opacity:1;transform:translateY(0);}}
+
+  .hero-card{animation:card-in .8s .3s cubic-bezier(.21,.6,.35,1) backwards;}
+  @keyframes card-in{from{opacity:0;transform:translateY(20px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+  .float-chip.c1{animation:chip-in .7s .6s cubic-bezier(.21,.6,.35,1) backwards;}
+  .float-chip.c2{animation:chip-in .7s .75s cubic-bezier(.21,.6,.35,1) backwards;}
+  @keyframes chip-in{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal],[data-reveal-group] > *,.hero-text > *,.hero-card,.float-chip{
+      animation:none !important;transition:none !important;opacity:1 !important;transform:none !important;
+    }
+  }
+
   @media(max-width:900px){
     .hero{grid-template-columns:1fr;padding-top:50px;}
     .hero h1{font-size:2.2rem;}
@@ -395,12 +424,12 @@
 </section>
 
 <section class="section" id="programs">
-  <div class="section-head">
+  <div class="section-head" data-reveal>
     <span class="eyebrow">برامجنا</span>
     <h2>اختار المسار المناسب لطفلك</h2>
     <p>كل برنامج اتصمم بعناية عشان يحقق أهداف تعليمية واضحة من غير ما يحس طفلك إنه "بيذاكر"</p>
   </div>
-  <div class="cards">
+  <div class="cards" data-reveal-group>
     <div class="card">
       <div class="icon">📚</div>
       <h3>دروس المناهج الدراسية</h3>
@@ -421,7 +450,7 @@
 
 <section class="section" id="why">
   <div class="why">
-    <div class="why-inner">
+    <div class="why-inner" data-reveal>
       <div>
         <h2>ليه أكاديمية لينجو هي الاختيار الصح؟</h2>
         <p>إحنا مش بس بنعلّم، إحنا بنبني علاقة ثقة بين طفلك والتعلّم، من خلال متابعة قريبة ومدرّسات بتفهم احتياج كل طفل.</p>
@@ -437,12 +466,12 @@
 </section>
 
 <section class="section" id="videos">
-  <div class="section-head">
+  <div class="section-head" data-reveal>
     <span class="eyebrow">شاهدوا بأنفسكم</span>
     <h2>لحظات من رحلة التعلّم عندنا</h2>
     <p>مقتطفات من حلقات التحفيظ، شرح الدروس، وأنشطة الكورسات الصيفية</p>
   </div>
-  <div class="video-grid">
+  <div class="video-grid" data-reveal-group>
     <div class="video-card">
       <a href="https://www.facebook.com/LingoAcademy2" target="_blank" style="text-decoration:none;display:block;">
         <div class="video-thumb">
@@ -486,12 +515,12 @@
 </section>
 
 <section class="section" id="reviews">
-  <div class="section-head">
+  <div class="section-head" data-reveal>
     <span class="eyebrow">آراء أولياء الأمور</span>
     <h2>ثقة الأهالي هي أكبر إنجاز ليّنا</h2>
     <p>دي تجارب حقيقية من أهالي بنفخر إننا اتعاملنا مع أطفالهم</p>
   </div>
-  <div class="reviews-track">
+  <div class="reviews-track" data-reveal-group>
     <div class="review-card">
       <span class="review-quote-mark">"</span>
       <div class="review-stars">★★★★★</div>
@@ -523,7 +552,7 @@
 </section>
 
 <section class="section" id="contact">
-  <div class="cta-band">
+  <div class="cta-band" data-reveal>
     <h2>تابعونا أول بأول على فيسبوك 👋</h2>
     <p>أحدث الكورسات، المواعيد، والعروض بنشرها على صفحتنا الرسمية</p>
     <a class="fb-btn" href="https://www.facebook.com/LingoAcademy2" target="_blank">
@@ -572,6 +601,26 @@
     </a>
   </div>
 </div>
+
+<script>
+  // subtle scroll-reveal
+  (function(){
+    var targets = document.querySelectorAll('[data-reveal], [data-reveal-group]');
+    if(!('IntersectionObserver' in window)){
+      targets.forEach(function(t){ t.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+    targets.forEach(function(t){ io.observe(t); });
+  })();
+</script>
 
 <script>
   (function(){
