@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lingo Academy | أكاديمية لينجو لتعليم اللغات والقرآن الكريم</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Baloo+Bhaijaan+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#9140C1;
+    --purple-dark:#6B2A93;
+    --green:#AFCE2A;
+    --green-dark:#8FAE16;
+    --cream:#FFFBF3;
+    --ink:#2B1535;
+    --paper:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Cairo', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.brand{font-family:'Baloo Bhaijaan 2', 'Cairo', sans-serif;}
+
+  /* blob background decorations */
+  .blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.18;z-index:0;}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,251,243,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid rgba(145,64,193,.08);
+  }
+  .nav{
+    max-width:1180px;margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-brand{display:flex;align-items:center;gap:12px;}
+  .nav-brand img{width:44px;height:44px;}
+  .nav-brand span{font-weight:800;font-size:1.3rem;color:var(--purple-dark);}
+  .nav-links{display:flex;gap:30px;list-style:none;}
+  .nav-links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.97rem;transition:color .2s;}
+  .nav-links a:hover{color:var(--purple);}
+  .nav-cta{
+    background:var(--green);color:var(--ink);font-weight:800;
+    padding:11px 24px;border-radius:50px;text-decoration:none;
+    box-shadow:0 6px 0 var(--green-dark);transition:transform .15s;
+    font-size:.95rem;
+  }
+  .nav-cta:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--green-dark);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    max-width:1180px;margin:0 auto;
+    padding:80px 28px 60px;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
+  }
+  .blob1{width:420px;height:420px;background:var(--purple);top:-120px;right:-100px;}
+  .blob2{width:300px;height:300px;background:var(--green);bottom:-80px;left:10%;}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(175,206,42,.18);color:var(--green-dark);
+    font-weight:800;font-size:.85rem;padding:8px 18px;border-radius:50px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;}
+  .hero h1{
+    font-size:3.1rem;line-height:1.25;font-weight:800;color:var(--purple-dark);
+    margin-bottom:20px;
+  }
+  .hero h1 span{color:var(--green-dark);}
+  .hero p{font-size:1.15rem;line-height:1.9;color:#5b4a66;margin-bottom:30px;max-width:540px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--purple);color:#fff;font-weight:800;padding:16px 32px;
+    border-radius:50px;text-decoration:none;font-size:1.02rem;
+    box-shadow:0 7px 0 var(--purple-dark);transition:transform .15s;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-primary:hover{transform:translateY(3px);box-shadow:0 4px 0 var(--purple-dark);}
+  .btn-secondary{
+    background:#fff;color:var(--purple-dark);font-weight:800;padding:16px 32px;
+    border-radius:50px;text-decoration:none;font-size:1.02rem;border:2.5px solid var(--purple);
+  }
+  .hero-stats{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap;}
+  .stat b{display:block;font-size:1.7rem;color:var(--purple-dark);font-weight:800;}
+  .stat span{color:#7a6a85;font-size:.9rem;font-weight:600;}
+
+  .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;}
+  .hero-card{
+    background:#fff;border-radius:32px;padding:46px;
+    box-shadow:0 30px 60px -20px rgba(145,64,193,.35);
+    position:relative;z-index:2;
+    width:100%;max-width:360px;text-align:center;
+  }
+  .hero-card img{width:130px;height:130px;margin-bottom:18px;}
+  .hero-card h3{color:var(--purple-dark);font-size:1.3rem;margin-bottom:8px;}
+  .hero-card p{color:#7a6a85;font-size:.95rem;}
+  .float-chip{
+    position:absolute;background:#fff;border-radius:20px;padding:14px 18px;
+    box-shadow:0 14px 30px -10px rgba(0,0,0,.15);font-weight:700;font-size:.85rem;
+    display:flex;align-items:center;gap:10px;z-index:3;
+  }
+  .float-chip.c1{top:-10px;left:-30px;color:var(--purple-dark);}
+  .float-chip.c2{bottom:10px;right:-40px;color:var(--green-dark);}
+  .float-chip .dot{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+  .c1 .dot{background:rgba(175,206,42,.2);}
+  .c2 .dot{background:rgba(145,64,193,.15);}
+
+  /* PROGRAMS */
+  .section{max-width:1180px;margin:0 auto;padding:90px 28px;position:relative;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 54px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:2.3rem;color:var(--purple-dark);font-weight:800;margin-bottom:14px;}
+  .section-head p{color:#7a6a85;font-size:1.05rem;line-height:1.8;}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .card{
+    background:#fff;border-radius:26px;padding:38px 30px;
+    box-shadow:0 18px 40px -22px rgba(43,21,53,.18);
+    transition:transform .25s, box-shadow .25s;border-top:6px solid var(--purple);
+  }
+  .card:nth-child(2){border-top-color:var(--green);}
+  .card:nth-child(3){border-top-color:var(--purple-dark);}
+  .card:hover{transform:translateY(-8px);box-shadow:0 26px 50px -22px rgba(43,21,53,.26);}
+  .card .icon{
+    width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;margin-bottom:20px;background:rgba(145,64,193,.1);
+  }
+  .card:nth-child(2) .icon{background:rgba(175,206,42,.18);}
+  .card h3{color:var(--purple-dark);font-size:1.25rem;margin-bottom:12px;font-weight:800;}
+  .card p{color:#7a6a85;line-height:1.85;font-size:.97rem;}
+
+  /* WHY US */
+  .why{background:linear-gradient(135deg,var(--purple) 0%,#7A35A8 100%);border-radius:40px;
+       padding:70px 50px;color:#fff;position:relative;overflow:hidden;}
+  .why::before{content:"";position:absolute;width:380px;height:380px;background:var(--green);opacity:.18;
+              border-radius:50%;top:-150px;left:-100px;}
+  .why-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .why h2{font-size:2.1rem;margin-bottom:18px;font-weight:800;}
+  .why p{opacity:.92;line-height:1.9;margin-bottom:10px;}
+  .why-list{list-style:none;display:flex;flex-direction:column;gap:18px;}
+  .why-list li{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,.1);
+               padding:16px 18px;border-radius:18px;font-weight:700;}
+  .why-list .check{
+    width:30px;height:30px;background:var(--green);color:var(--purple-dark);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900;
+  }
+
+  /* CTA / Facebook */
+  .cta-band{
+    background:var(--green);border-radius:34px;padding:60px 50px;text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .cta-band::before,.cta-band::after{content:"";position:absolute;border-radius:50%;background:#fff;opacity:.15;}
+  .cta-band::before{width:200px;height:200px;top:-90px;right:-60px;}
+  .cta-band::after{width:140px;height:140px;bottom:-70px;left:5%;}
+  .cta-band h2{font-size:2.1rem;color:var(--ink);font-weight:800;margin-bottom:16px;position:relative;z-index:2;}
+  .cta-band p{color:#3c4a14;font-size:1.05rem;margin-bottom:30px;position:relative;z-index:2;}
+  .fb-btn{
+    background:var(--ink);color:#fff;font-weight:800;padding:18px 40px;border-radius:50px;
+    text-decoration:none;display:inline-flex;align-items:center;gap:12px;font-size:1.1rem;
+    box-shadow:0 8px 0 #000;transition:transform .15s;position:relative;z-index:2;
+  }
+  .fb-btn:hover{transform:translateY(3px);box-shadow:0 5px 0 #000;}
+  .fb-btn svg{width:26px;height:26px;}
+
+  footer{
+    background:var(--ink);color:#cdb8d6;padding:50px 28px 26px;margin-top:40px;
+  }
+  .footer-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;
+                align-items:center;flex-wrap:wrap;gap:20px;border-bottom:1px solid rgba(255,255,255,.1);
+                padding-bottom:30px;}
+  .footer-brand{display:flex;align-items:center;gap:12px;}
+  .footer-brand img{width:38px;height:38px;}
+  .footer-brand span{color:#fff;font-weight:800;font-size:1.15rem;}
+  .footer-links{display:flex;gap:26px;list-style:none;}
+  .footer-links a{color:#cdb8d6;text-decoration:none;font-weight:600;font-size:.92rem;}
+  .footer-bottom{max-width:1180px;margin:24px auto 0;text-align:center;font-size:.85rem;color:#8a7693;}
+  .footer-bottom a{color:var(--green);text-decoration:none;font-weight:700;}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;padding-top:50px;}
+    .hero h1{font-size:2.2rem;}
+    .cards{grid-template-columns:1fr;}
+    .why-inner{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .float-chip{display:none;}
+    .why,.cta-band{padding:40px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="nav-brand">
+      <img src="logo.png" alt="Lingo Academy">
+      <span>Lingo Academy</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#programs">برامجنا</a></li>
+      <li><a href="#why">ليه احنا</a></li>
+      <li><a href="#contact">تواصل معنا</a></li>
+    </ul>
+    <a class="nav-cta" href="https://www.facebook.com/LingoAcademy2" target="_blank">صفحتنا على فيسبوك</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="hero-text">
+    <span class="eyebrow">تعليم أونلاين تفاعلي لأطفالك</span>
+    <h1>رحلة تعلّم ممتعة بين <span>المنهج</span> و<span>القرآن</span> و<span>المهارات</span></h1>
+    <p>Lingo Academy أكاديمية أونلاين متخصصة في تدريس المناهج المصرية ومناهج الدول العربية، وتحفيظ القرآن الكريم، مع كورسات صيفية لتنمية مهارات أطفالك، على إيد مدرّسات متخصصات وبأساليب شيّقة وتفاعلية.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://www.facebook.com/LingoAcademy2" target="_blank">
+        احجز تجربة مجانية ←
+      </a>
+      <a class="btn-secondary" href="#programs">شوف برامجنا</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>3</b><span>مسارات تعليمية</span></div>
+      <div class="stat"><b>100%</b><span>أونلاين من البيت</span></div>
+      <div class="stat"><b>مدرّسات</b><span>متخصصات ومؤهلات</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="float-chip c1"><span class="dot">📖</span> تحفيظ بأسلوب مبسّط</div>
+    <div class="float-chip c2"><span class="dot">🎨</span> أنشطة تفاعلية</div>
+    <div class="hero-card">
+      <img src="logo.png" alt="Lingo Academy">
+      <h3>تعلّم بثقة، بمتعة</h3>
+      <p>منظومة تعليمية متكاملة مصممة خصيصًا لطفلك من بيته</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="programs">
+  <div class="section-head">
+    <span class="eyebrow">برامجنا</span>
+    <h2>اختار المسار المناسب لطفلك</h2>
+    <p>كل برنامج اتصمم بعناية عشان يحقق أهداف تعليمية واضحة من غير ما يحس طفلك إنه "بيذاكر"</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">📚</div>
+      <h3>دروس المناهج الدراسية</h3>
+      <p>دروس أونلاين للمناهج المصرية ومناهج الدول العربية، شرح مبسّط ومتابعة فردية تضمن فهم المادة وتثبيت المعلومة.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🕌</div>
+      <h3>تحفيظ القرآن الكريم</h3>
+      <p>حلقات تحفيظ وتجويد بأسلوب تربوي محبب، مع مدرّسات متخصصات بيهتمّوا بالتلاوة الصحيحة وغرس حب القرآن.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌞</div>
+      <h3>كورسات صيفية للمهارات</h3>
+      <p>أنشطة وكورسات صيفية تفاعلية لتنمية مهارات طفلك العقلية والإبداعية بأساليب ممتعة بعيدة عن الملل.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="why">
+    <div class="why-inner">
+      <div>
+        <h2>ليه أكاديمية لينجو هي الاختيار الصح؟</h2>
+        <p>إحنا مش بس بنعلّم، إحنا بنبني علاقة ثقة بين طفلك والتعلّم، من خلال متابعة قريبة ومدرّسات بتفهم احتياج كل طفل.</p>
+      </div>
+      <ul class="why-list">
+        <li><span class="check">✓</span> مدرّسات متخصصات ومؤهلات تربويًا</li>
+        <li><span class="check">✓</span> أساليب تفاعلية وممتعة بعيدة عن التلقين</li>
+        <li><span class="check">✓</span> مرونة كاملة في المواعيد من البيت</li>
+        <li><span class="check">✓</span> متابعة مستمرة لمستوى الطفل وتقدّمه</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="cta-band">
+    <h2>تابعونا أول بأول على فيسبوك 👋</h2>
+    <p>أحدث الكورسات، المواعيد، والعروض بنشرها على صفحتنا الرسمية</p>
+    <a class="fb-btn" href="https://www.facebook.com/LingoAcademy2" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.78-1.63 1.57v1.9h2.78l-.45 2.91h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg>
+      Lingo Academy على فيسبوك
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Lingo Academy">
+      <span>Lingo Academy</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#programs">برامجنا</a></li>
+      <li><a href="#why">ليه احنا</a></li>
+      <li><a href="https://www.facebook.com/LingoAcademy2" target="_blank">فيسبوك</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    تم الإنشاء والتكويد بواسطة <a href="https://aquadic.com" target="_blank">aquadic.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
