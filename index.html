@@ -171,6 +171,52 @@
   .fb-btn:hover{transform:translateY(3px);box-shadow:0 5px 0 #000;}
   .fb-btn svg{width:26px;height:26px;}
 
+  /* VIDEOS */
+  .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .video-card{
+    background:#fff;border-radius:22px;overflow:hidden;
+    box-shadow:0 18px 40px -24px rgba(43,21,53,.2);transition:transform .25s, box-shadow .25s;
+  }
+  .video-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -22px rgba(43,21,53,.28);}
+  .video-thumb{
+    position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .video-thumb .play{
+    width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.95);color:var(--purple-dark);
+    display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+    box-shadow:0 10px 24px -8px rgba(0,0,0,.4);transition:transform .2s;
+  }
+  .video-card:hover .play{transform:scale(1.1);}
+  .video-thumb .badge-min{
+    position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,.55);color:#fff;font-size:.75rem;
+    font-weight:700;padding:4px 10px;border-radius:8px;
+  }
+  .video-info{padding:20px 22px;}
+  .video-info h4{color:var(--purple-dark);font-size:1.05rem;font-weight:800;margin-bottom:6px;}
+  .video-info p{color:#7a6a85;font-size:.88rem;}
+
+  /* REVIEWS */
+  .reviews-track{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .review-card{
+    background:#fff;border-radius:24px;padding:32px 28px;position:relative;
+    box-shadow:0 18px 40px -24px rgba(43,21,53,.18);
+  }
+  .review-stars{color:var(--green-dark);font-size:1.05rem;margin-bottom:16px;letter-spacing:2px;}
+  .review-card p{color:#5b4a66;line-height:1.85;font-size:.97rem;margin-bottom:22px;min-height:90px;}
+  .review-person{display:flex;align-items:center;gap:14px;}
+  .review-avatar{
+    width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:800;color:#fff;font-size:1.05rem;flex-shrink:0;
+  }
+  .review-avatar.p1{background:var(--purple);}
+  .review-avatar.p2{background:var(--green-dark);}
+  .review-avatar.p3{background:var(--purple-dark);}
+  .review-person b{display:block;color:var(--ink);font-size:.95rem;}
+  .review-person span{color:#9583a0;font-size:.82rem;}
+  .review-quote-mark{position:absolute;top:24px;left:28px;font-size:2.6rem;color:rgba(145,64,193,.12);
+                     font-family:Georgia,serif;font-weight:900;line-height:1;}
+
   footer{
     background:var(--ink);color:#cdb8d6;padding:50px 28px 26px;margin-top:40px;
   }
@@ -185,14 +231,117 @@
   .footer-bottom{max-width:1180px;margin:24px auto 0;text-align:center;font-size:.85rem;color:#8a7693;}
   .footer-bottom a{color:var(--green);text-decoration:none;font-weight:700;}
 
+  /* WHATSAPP CHATHEAD */
+  .wa-float{
+    position:fixed;bottom:26px;left:26px;z-index:200;
+    width:64px;height:64px;border-radius:50%;background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px -6px rgba(37,211,102,.6);text-decoration:none;
+    animation:wa-pulse 2.4s infinite;
+  }
+  .wa-float svg{width:32px;height:32px;fill:#fff;}
+  @keyframes wa-pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,.55),0 10px 30px -6px rgba(37,211,102,.6);}
+    70%{box-shadow:0 0 0 16px rgba(37,211,102,0),0 10px 30px -6px rgba(37,211,102,.6);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0),0 10px 30px -6px rgba(37,211,102,.6);}
+  }
+
+  /* WHATSAPP POPUP */
+  .wa-overlay{
+    position:fixed;inset:0;background:rgba(43,21,53,.55);backdrop-filter:blur(3px);
+    z-index:300;display:none;align-items:center;justify-content:center;padding:20px;
+  }
+  .wa-overlay.show{display:flex;animation:fadeIn .3s ease;}
+  @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+  .wa-popup{
+    background:#fff;border-radius:28px;max-width:380px;width:100%;padding:38px 32px 32px;
+    text-align:center;position:relative;box-shadow:0 40px 80px -20px rgba(0,0,0,.4);
+    animation:popIn .35s cubic-bezier(.2,1.4,.4,1);
+  }
+  @keyframes popIn{from{transform:scale(.85);opacity:0;}to{transform:scale(1);opacity:1;}}
+  .wa-popup .close-x{
+    position:absolute;top:16px;left:16px;width:32px;height:32px;border-radius:50%;background:#F4EFFA;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--purple-dark);
+    font-size:1.1rem;border:none;font-weight:800;
+  }
+  .wa-popup .wa-icon{
+    width:70px;height:70px;border-radius:50%;background:#25D366;display:flex;align-items:center;
+    justify-content:center;margin:0 auto 20px;
+  }
+  .wa-popup .wa-icon svg{width:36px;height:36px;fill:#fff;}
+  .wa-popup h3{color:var(--purple-dark);font-size:1.35rem;font-weight:800;margin-bottom:10px;}
+  .wa-popup p{color:#7a6a85;font-size:.96rem;line-height:1.8;margin-bottom:24px;}
+  .wa-popup a.wa-go{
+    background:#25D366;color:#fff;font-weight:800;padding:15px 0;border-radius:50px;
+    text-decoration:none;display:flex;align-items:center;justify-content:center;gap:10px;
+    font-size:1.02rem;box-shadow:0 7px 0 #1aa653;transition:transform .15s;
+  }
+  .wa-popup a.wa-go:hover{transform:translateY(3px);box-shadow:0 4px 0 #1aa653;}
+  .wa-popup a.wa-go svg{width:22px;height:22px;fill:#fff;}
+
+  /* WHATSAPP CHATHEAD */
+  .wa-chathead{
+    position:fixed;bottom:26px;left:26px;z-index:200;
+    width:64px;height:64px;border-radius:50%;background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 28px -6px rgba(37,211,102,.6);
+    text-decoration:none;animation:wa-pulse 2.2s infinite;
+  }
+  .wa-chathead svg{width:32px;height:32px;fill:#fff;}
+  @keyframes wa-pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,.55),0 10px 28px -6px rgba(37,211,102,.6);}
+    70%{box-shadow:0 0 0 16px rgba(37,211,102,0),0 10px 28px -6px rgba(37,211,102,.6);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0),0 10px 28px -6px rgba(37,211,102,.6);}
+  }
+
+  /* WHATSAPP POPUP */
+  .wa-overlay{
+    position:fixed;inset:0;background:rgba(43,21,53,.55);backdrop-filter:blur(3px);
+    z-index:300;display:none;align-items:center;justify-content:center;padding:20px;
+  }
+  .wa-overlay.show{display:flex;}
+  .wa-popup{
+    background:#fff;border-radius:26px;max-width:380px;width:100%;padding:36px 30px;text-align:center;
+    position:relative;box-shadow:0 30px 70px -20px rgba(0,0,0,.4);
+    animation:wa-pop .35s ease;
+  }
+  @keyframes wa-pop{from{transform:scale(.85);opacity:0;}to{transform:scale(1);opacity:1;}}
+  .wa-popup .wa-close{
+    position:absolute;top:14px;left:14px;width:30px;height:30px;border-radius:50%;background:#f1eaf5;
+    border:none;color:var(--purple-dark);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;
+    justify-content:center;
+  }
+  .wa-popup .wa-icon{
+    width:70px;height:70px;background:#25D366;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;margin:0 auto 18px;
+  }
+  .wa-popup .wa-icon svg{width:36px;height:36px;fill:#fff;}
+  .wa-popup h3{color:var(--purple-dark);font-size:1.3rem;font-weight:800;margin-bottom:10px;}
+  .wa-popup p{color:#7a6a85;font-size:.96rem;line-height:1.8;margin-bottom:24px;}
+  .wa-popup a.wa-go{
+    background:#25D366;color:#fff;font-weight:800;padding:15px 26px;border-radius:50px;
+    text-decoration:none;display:inline-flex;align-items:center;gap:10px;font-size:1rem;
+    box-shadow:0 7px 0 #1CA851;transition:transform .15s;
+  }
+  .wa-popup a.wa-go:hover{transform:translateY(3px);box-shadow:0 4px 0 #1CA851;}
+
+  @media(max-width:600px){
+    .wa-chathead{width:56px;height:56px;bottom:18px;left:18px;}
+    .wa-chathead svg{width:28px;height:28px;}
+  }
+
   @media(max-width:900px){
     .hero{grid-template-columns:1fr;padding-top:50px;}
     .hero h1{font-size:2.2rem;}
     .cards{grid-template-columns:1fr;}
+    .video-grid{grid-template-columns:1fr;}
+    .reviews-track{grid-template-columns:1fr;}
     .why-inner{grid-template-columns:1fr;}
     .nav-links{display:none;}
     .float-chip{display:none;}
     .why,.cta-band{padding:40px 24px;}
+    .wa-float{width:58px;height:58px;bottom:18px;left:18px;}
+    .wa-float svg{width:28px;height:28px;}
   }
 </style>
 </head>
@@ -207,9 +356,11 @@
     <ul class="nav-links">
       <li><a href="#programs">برامجنا</a></li>
       <li><a href="#why">ليه احنا</a></li>
+      <li><a href="#videos">فيديوهات</a></li>
+      <li><a href="#reviews">آراء أولياء الأمور</a></li>
       <li><a href="#contact">تواصل معنا</a></li>
     </ul>
-    <a class="nav-cta" href="https://www.facebook.com/LingoAcademy2" target="_blank">صفحتنا على فيسبوك</a>
+    <a class="nav-cta" href="https://wa.me/201101782890" target="_blank">واتساب: 201101782890+</a>
   </div>
 </header>
 
@@ -285,6 +436,92 @@
   </div>
 </section>
 
+<section class="section" id="videos">
+  <div class="section-head">
+    <span class="eyebrow">شاهدوا بأنفسكم</span>
+    <h2>لحظات من رحلة التعلّم عندنا</h2>
+    <p>مقتطفات من حلقات التحفيظ، شرح الدروس، وأنشطة الكورسات الصيفية</p>
+  </div>
+  <div class="video-grid">
+    <div class="video-card">
+      <a href="https://www.facebook.com/LingoAcademy2" target="_blank" style="text-decoration:none;display:block;">
+        <div class="video-thumb">
+          <span class="play">▶</span>
+          <span class="badge-min">حلقة تحفيظ</span>
+        </div>
+      </a>
+      <div class="video-info">
+        <h4>جلسة تحفيظ مع مدرّستنا</h4>
+        <p>أسلوب مبسّط في حفظ وتجويد القرآن الكريم</p>
+      </div>
+    </div>
+    <div class="video-card">
+      <a href="https://www.facebook.com/LingoAcademy2" target="_blank" style="text-decoration:none;display:block;">
+        <div class="video-thumb">
+          <span class="play">▶</span>
+          <span class="badge-min">شرح درس</span>
+        </div>
+      </a>
+      <div class="video-info">
+        <h4>درس تفاعلي أونلاين</h4>
+        <p>متابعة فردية وشرح مبسّط لمنهج الطالب</p>
+      </div>
+    </div>
+    <div class="video-card">
+      <a href="https://www.facebook.com/LingoAcademy2" target="_blank" style="text-decoration:none;display:block;">
+        <div class="video-thumb">
+          <span class="play">▶</span>
+          <span class="badge-min">نشاط صيفي</span>
+        </div>
+      </a>
+      <div class="video-info">
+        <h4>كورس صيفي لتنمية المهارات</h4>
+        <p>أنشطة ممتعة وتفاعلية في الإجازة الصيفية</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:42px;">
+    <a class="btn-secondary" href="https://www.facebook.com/LingoAcademy2" target="_blank">شاهد كل الفيديوهات على فيسبوك</a>
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="section-head">
+    <span class="eyebrow">آراء أولياء الأمور</span>
+    <h2>ثقة الأهالي هي أكبر إنجاز ليّنا</h2>
+    <p>دي تجارب حقيقية من أهالي بنفخر إننا اتعاملنا مع أطفالهم</p>
+  </div>
+  <div class="reviews-track">
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <p>ابني بقى يستنى معاد حصة التحفيظ بفارغ الصبر، المدرّسة بجد بتتعامل معاه بصبر وحب.</p>
+      <div class="review-person">
+        <div class="review-avatar p1">س</div>
+        <div><b>أم سيف</b><span>ولي أمر طالب تحفيظ</span></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <p>المتابعة الفردية فرقت معايا جدًا، بنتي بقى مستواها في المنهج اتحسن بشكل ملحوظ خلال شهرين بس.</p>
+      <div class="review-person">
+        <div class="review-avatar p2">م</div>
+        <div><b>أبو مريم</b><span>ولي أمر طالبة مناهج</span></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <p>الكورس الصيفي كان تجربة مختلفة تمامًا، ولادي اتعلموا واستمتعوا في نفس الوقت من غير ملل.</p>
+      <div class="review-person">
+        <div class="review-avatar p3">ي</div>
+        <div><b>أم يوسف وحنين</b><span>ولية أمر طالبين كورس صيفي</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="contact">
   <div class="cta-band">
     <h2>تابعونا أول بأول على فيسبوك 👋</h2>
@@ -305,6 +542,8 @@
     <ul class="footer-links">
       <li><a href="#programs">برامجنا</a></li>
       <li><a href="#why">ليه احنا</a></li>
+      <li><a href="#videos">فيديوهات</a></li>
+      <li><a href="#reviews">آراء أولياء الأمور</a></li>
       <li><a href="https://www.facebook.com/LingoAcademy2" target="_blank">فيسبوك</a></li>
     </ul>
   </div>
@@ -312,6 +551,48 @@
     تم الإنشاء والتكويد بواسطة <a href="https://aquadic.com" target="_blank">aquadic.com</a>
   </div>
 </footer>
+
+<!-- WhatsApp Chathead -->
+<a class="wa-chathead" href="https://wa.me/201101782890" target="_blank" aria-label="تواصل معنا على واتساب">
+  <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.08L2 22l5.06-1.32A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.07c-1.62 0-3.13-.45-4.42-1.23l-.32-.19-3.08.8.82-3-.21-.32A8.06 8.06 0 0 1 3.93 12c0-4.45 3.62-8.07 8.07-8.07S20.07 7.55 20.07 12 16.45 20.07 12 20.07z"/></svg>
+</a>
+
+<!-- WhatsApp Popup -->
+<div class="wa-overlay" id="waOverlay">
+  <div class="wa-popup">
+    <button class="wa-close" id="waClose" aria-label="إغلاق">✕</button>
+    <div class="wa-icon">
+      <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.08L2 22l5.06-1.32A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.07c-1.62 0-3.13-.45-4.42-1.23l-.32-.19-3.08.8.82-3-.21-.32A8.06 8.06 0 0 1 3.93 12c0-4.45 3.62-8.07 8.07-8.07S20.07 7.55 20.07 12 16.45 20.07 12 20.07z"/></svg>
+    </div>
+    <h3>لسه مستني إيه؟ 👋</h3>
+    <p>كلّمنا دلوقتي على الواتساب وهنرد عليك فورًا بكل تفاصيل البرامج والمواعيد المتاحة.</p>
+    <a class="wa-go" href="https://wa.me/201101782890" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+      كلّمنا على واتساب
+    </a>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var overlay = document.getElementById('waOverlay');
+    var closeBtn = document.getElementById('waClose');
+    var shown = false;
+    function openPopup(){
+      if(shown) return;
+      shown = true;
+      overlay.classList.add('show');
+    }
+    function closePopup(){
+      overlay.classList.remove('show');
+    }
+    setTimeout(openPopup, 30000);
+    closeBtn.addEventListener('click', closePopup);
+    overlay.addEventListener('click', function(e){
+      if(e.target === overlay) closePopup();
+    });
+  })();
+</script>
 
 </body>
 </html>
